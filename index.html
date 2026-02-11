@@ -1,420 +1,753 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wessel Braakman — QA & Test Automation Consultant</title>
-<meta name="description" content="Portfolio of Wessel Braakman — IT consultant specializing in quality assurance, testing, and test automation.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wessel Braakman — QA & Test Automation</title>
+  <meta name="description" content="Portfolio of Wessel Braakman — IT consultant focusing on quality assurance, testing, and test automation. Speaker, workshop host, and founder of Norsk AI-Etikkforening (NAIE)." />
 
-<style>
-:root {
-  --bg: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --accent: #2563eb;
-  --border: #e2e8f0;
-  --card: #f8fafc;
-  --max-width: 1000px;
-}
+  <style>
+    :root{
+      --bg: #f8fafc;
+      --bg2:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --border: rgba(15,23,42,.12);
+      --card: rgba(255,255,255,.75);
+      --glass: rgba(255,255,255,.65);
+      --shadow: 0 18px 50px rgba(2,6,23,.08);
+      --shadow2: 0 14px 30px rgba(2,6,23,.08);
 
-* {
-  box-sizing: border-box;
-}
+      --accent1:#2563eb; /* blue */
+      --accent2:#7c3aed; /* violet */
+      --accent3:#10b981; /* emerald */
+      --accent4:#f59e0b; /* amber */
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
+      --radius: 18px;
+      --max: 1100px;
+    }
 
-.container {
-  max-width: var(--max-width);
-  margin: auto;
-  padding: 40px 20px;
-}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 0%, rgba(37,99,235,.14), transparent 60%),
+        radial-gradient(900px 500px at 85% 10%, rgba(124,58,237,.14), transparent 60%),
+        radial-gradient(1000px 600px at 50% 100%, rgba(16,185,129,.10), transparent 65%),
+        var(--bg);
+      line-height:1.6;
+    }
+    a{ color:inherit; }
+    .container{ max-width:var(--max); margin:0 auto; padding: 0 18px; }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid var(--border);
-}
+    /* --- Nav --- */
+    .nav{
+      position: fixed;
+      top:0; left:0; right:0;
+      z-index: 50;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      height:64px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      font-weight:800;
+      letter-spacing:-0.02em;
+      text-decoration:none;
+      font-size: 18px;
+    }
+    .brand .grad{
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .nav-links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size: 13px;
+      font-weight: 650;
+      color: var(--muted2);
+    }
+    .nav-links a{
+      text-decoration:none;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: all .18s ease;
+    }
+    .nav-links a:hover{
+      color: var(--text);
+      background: rgba(2,6,23,.04);
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-decoration:none;
+      font-weight: 750;
+      font-size: 14px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(37,99,235,.92), rgba(124,58,237,.92));
+      color:#fff;
+      border-color: rgba(37,99,235,.2);
+    }
+    .btn-secondary{
+      background: rgba(255,255,255,.7);
+      color: var(--text);
+    }
 
-nav a {
-  text-decoration: none;
-  color: var(--muted);
-  margin-left: 20px;
-  font-weight: 500;
-}
+    /* --- Sections --- */
+    .section{ padding: 92px 0 0; }
+    .hero{ padding-top: 110px; padding-bottom: 26px; text-align:center; }
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--muted2);
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      box-shadow: 0 0 0 5px rgba(37,99,235,.10);
+    }
+    h1{
+      margin: 18px auto 10px;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 900px;
+    }
+    .h1a{ color: var(--text); display:block; }
+    .h1b{
+      display:block;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .lead{
+      margin: 0 auto;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .cta{ margin-top: 18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
 
-nav a:hover {
-  color: var(--accent);
-}
+    .subtle-row{
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.6);
+      text-decoration:none;
+      transition: all .18s ease;
+    }
+    .pill:hover{ box-shadow: var(--shadow2); transform: translateY(-1px); }
 
-h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
+    /* --- Marquee strip --- */
+    .strip{
+      margin-top: 26px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background:
+        linear-gradient(90deg, rgba(37,99,235,.06), rgba(124,58,237,.06), rgba(16,185,129,.05));
+      overflow:hidden;
+      padding: 14px 0;
+    }
+    .marquee{
+      display:flex;
+      gap: 48px;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+      will-change: transform;
+      padding-left: 24px;
+    }
+    @keyframes marquee{
+      0%{ transform: translateX(0); }
+      100%{ transform: translateX(-50%); }
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size: 13px;
+      font-weight: 750;
+      color: var(--muted);
+    }
+    .chip .mini{
+      width: 18px; height: 18px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, rgba(37,99,235,.25), rgba(124,58,237,.25));
+      border: 1px solid rgba(2,6,23,.08);
+    }
 
-h2 {
-  margin-top: 60px;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
+    /* --- Cards / grids --- */
+    .section-head{
+      text-align:center;
+      margin: 0 auto 18px;
+      max-width: 820px;
+    }
+    .title{
+      margin:0;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+    }
+    .subtitle{
+      margin: 8px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
 
-p {
-  color: var(--muted);
-  max-width: 700px;
-}
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+    @media (max-width: 900px){
+      .grid3{ grid-template-columns: 1fr; }
+      .nav-links{ display:none; }
+    }
 
-.section {
-  margin-bottom: 40px;
-}
+    .card{
+      position:relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 1px 0 rgba(2,6,23,.04);
+      overflow:hidden;
+      transition: all .22s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+      border-color: rgba(37,99,235,.22);
+    }
+    .glow{
+      position:absolute; inset:-40px;
+      background: radial-gradient(600px 200px at 10% 10%, rgba(37,99,235,.14), transparent 55%),
+                  radial-gradient(600px 200px at 90% 0%, rgba(124,58,237,.14), transparent 60%);
+      opacity: .65;
+      pointer-events:none;
+    }
+    .card h3{ margin: 0 0 8px; font-size: 18px; letter-spacing: -0.01em; }
+    .card p{ margin:0; color: var(--muted); font-size: 14px; }
 
-.card {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  margin-bottom: 20px;
-}
+    .bullets{ margin-top: 12px; display:grid; gap: 8px; }
+    .b{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .b .bDot{
+      width:8px; height:8px; border-radius:999px; margin-top: 7px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    }
 
-.tag {
-  display: inline-block;
-  background: #e0e7ff;
-  color: #3730a3;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  margin-right: 6px;
-  margin-top: 6px;
-}
+    /* --- Carousel --- */
+    .carousel{ position:relative; margin-top: 18px; }
+    .track{
+      display:grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(290px, 1fr);
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 6px 54px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .track::-webkit-scrollbar{ height: 10px; }
+    .track::-webkit-scrollbar-thumb{
+      background: rgba(100,116,139,.25);
+      border-radius: 999px;
+    }
+    .slide{
+      scroll-snap-align: start;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      box-shadow: 0 1px 0 rgba(2,6,23,.04);
+      position:relative;
+      overflow:hidden;
+    }
+    .slide:hover{ transform: translateY(-2px); box-shadow: var(--shadow2); border-color: rgba(37,99,235,.22); }
+    .accent-bar{
+      position:absolute; top:0; left:0; right:0; height: 4px;
+      background: rgba(15,23,42,.08);
+    }
+    .qa   .accent-bar{ background: linear-gradient(90deg, var(--accent1), rgba(37,99,235,.35)); }
+    .tools .accent-bar{ background: linear-gradient(90deg, var(--accent2), rgba(124,58,237,.35)); }
+    .ai   .accent-bar{ background: linear-gradient(90deg, var(--accent3), rgba(16,185,129,.35)); }
+    .community .accent-bar{ background: linear-gradient(90deg, var(--accent4), rgba(245,158,11,.40)); }
 
-footer {
-  margin-top: 80px;
-  padding: 40px 20px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  color: var(--muted);
-  font-size: 14px;
-}
+    .slide h4{ margin: 10px 0 6px; font-size: 16px; letter-spacing:-0.01em; }
+    .meta{ margin:0; color: var(--muted); font-size: 13.5px; }
+    .tags{ margin-top: 12px; display:flex; flex-wrap:wrap; gap: 8px; }
+    .tag{
+      font-size: 12px;
+      font-weight: 750;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.75);
+      color: var(--muted);
+    }
+    .link{
+      display:inline-flex; gap:8px; align-items:center;
+      margin-top: 12px;
+      text-decoration:none;
+      font-weight: 800;
+      color: var(--accent1);
+      font-size: 13px;
+    }
+    .link:hover{ text-decoration: underline; }
 
-/* --- Carousel --- */
-.carousel {
-  position: relative;
-  margin-top: 16px;
-}
+    .cbtn{
+      position:absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px; height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.82);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      box-shadow: var(--shadow2);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .cbtn:hover{ border-color: rgba(37,99,235,.25); }
+    .cbtn:active{ transform: translateY(-50%) scale(.98); }
+    .prev{ left: 8px; }
+    .next{ right: 8px; }
 
-.carousel-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(260px, 1fr);
-  gap: 14px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 6px 48px; /* space for arrows */
-  -webkit-overflow-scrolling: touch;
-}
-.carousel-track::-webkit-scrollbar { height: 10px; }
-.carousel-track::-webkit-scrollbar-thumb {
-  background: rgba(100,116,139,.25);
-  border-radius: 999px;
-}
-.carousel-track > .slide {
-  scroll-snap-align: start;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 18px;
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.carousel-track > .slide:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(2,6,23,.08);
-}
+    /* --- About split --- */
+    .about-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      margin-top: 22px;
+    }
+    @media (max-width: 900px){
+      .about-grid{ grid-template-columns: 1fr; }
+    }
+    .mini-card{
+      background: rgba(255,255,255,.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      transition: all .18s ease;
+    }
+    .mini-card:hover{ box-shadow: var(--shadow2); transform: translateY(-1px); }
+    .mini-title{ margin:0 0 6px; font-weight: 850; letter-spacing:-0.01em; }
+    .mini-p{ margin:0; color: var(--muted); font-size: 14px; }
 
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 38px; height: 38px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.9);
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 10px 20px rgba(2,6,23,.08);
-}
-.carousel-btn:hover { border-color: rgba(37,99,235,.4); }
-.carousel-btn:active { transform: translateY(-50%) scale(.98); }
+    /* --- Footer --- */
+    footer{
+      margin-top: 80px;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted2);
+      font-size: 14px;
+      text-align:center;
+    }
 
-.carousel-btn.prev { left: 6px; }
-.carousel-btn.next { right: 6px; }
-
-.slide-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: flex-start;
-  margin-bottom: 10px;
-}
-.slide-title { margin: 0; font-size: 16px; }
-.slide-meta { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
-
-.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
-.badge {
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.8);
-  color: var(--muted);
-}
-
-/* Category accents */
-.accent {
-  border-top: 4px solid var(--border);
-}
-.accent.qa { border-top-color: #2563eb; }       /* blue */
-.accent.ai { border-top-color: #10b981; }       /* green */
-.accent.community { border-top-color: #f59e0b; }/* amber */
-.accent.tools { border-top-color: #7c3aed; }    /* violet */
-
-.link {
-  display: inline-block;
-  margin-top: 10px;
-  color: var(--accent);
-  font-weight: 700;
-  text-decoration: none;
-}
-.link:hover { text-decoration: underline; }
-
-@media (max-width: 520px) {
-  .carousel-track { padding: 6px 44px; }
-}
-
-</style>
+    /* --- Simple reveal animation --- */
+    .reveal{ opacity:0; transform: translateY(14px); }
+    .reveal.show{ opacity:1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease; }
+  </style>
 </head>
 
 <body>
 
-<nav>
-  <strong>Wessel Braakman</strong>
-  <div>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#talks">Talks</a>
-    <a href="#writing">Writing</a>
-    <a href="#community">Community</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#home"><span class="grad">wessel</span>.dev</a>
 
-<div class="container">
+        <nav class="nav-links" aria-label="Site navigation">
+          <a href="#focus">Focus</a>
+          <a href="#projects">Projects</a>
+          <a href="#talks">Talks</a>
+          <a href="#writing">Writing</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-  <section class="section">
-    <h1>Quality Assurance Consultant</h1>
-    <p>
-      IT consultant specializing in quality assurance, testing, and test automation.
-      Experienced in cross-team integration testing, automation strategy, agile collaboration,
-      and improving delivery confidence in complex environments.
-    </p>
-  </section>
-
-  <section id="experience" class="section">
-    <h2>Experience</h2>
-
-    <div class="card">
-      <strong>Senior QA Consultant — Multiple Enterprise Projects</strong>
-      <p>
-        Worked across backend, frontend, and integration layers in large multi-team environments.
-        Focused on automation strategy, regression setup, CI/CD integration, and quality coaching.
-      </p>
-      <span class="tag">Cypress</span>
-      <span class="tag">API Testing</span>
-      <span class="tag">Java</span>
-      <span class="tag">Kafka</span>
-      <span class="tag">CI/CD</span>
+        <a class="btn btn-secondary" href="#contact">Get in touch</a>
+      </div>
     </div>
+  </header>
 
-  </section>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="kicker reveal">
+          <span class="dot"></span>
+          QA • Testing • Test Automation • Talks • Community
+        </div>
 
-  <section id="projects" class="section">
-    <h2>Selected Projects</h2>
+        <h1 class="reveal">
+          <span class="h1a">Building confidence in</span>
+          <span class="h1b">complex software delivery</span>
+        </h1>
 
-<div class="carousel" data-carousel>
-  <button class="carousel-btn prev" data-prev aria-label="Previous">
-    &#8592;
-  </button>
+        <p class="lead reveal">
+          I’m <strong>Wessel Braakman</strong>, an IT consultant focusing on quality assurance, testing, and test automation.
+          I help teams ship with confidence through pragmatic strategies, smart automation, and cross-team collaboration.
+          I also run a nonprofit initiative: <strong>Norsk AI-Etikkforening (NAIE)</strong>.
+        </p>
 
-  <div class="carousel-track" data-track tabindex="0" aria-label="Projects carousel">
-    <article class="slide accent qa">
-      <div class="slide-top">
-        <h3 class="slide-title">Cross-application automation initiative</h3>
+        <div class="cta reveal">
+          <a class="btn btn-primary" href="#projects">Explore Projects →</a>
+          <a class="btn btn-secondary" href="#talks">Talks & Workshops</a>
+        </div>
+
+        <div class="subtle-row reveal" style="margin-top:16px;">
+          <a class="pill" href="#" title="Add your LinkedIn URL later">LinkedIn</a>
+          <a class="pill" href="#" title="Add your GitHub URL later">GitHub</a>
+          <a class="pill" href="#" title="Add a CV PDF link later">CV (PDF)</a>
+          <a class="pill" href="mailto:you@example.com">Email</a>
+        </div>
       </div>
-      <p class="slide-meta">
-        Backend-first tests across multiple apps + pipelines to reduce regression effort.
-      </p>
-      <div class="badges">
-        <span class="badge">QA</span>
-        <span class="badge">Integration</span>
-        <span class="badge">CI/CD</span>
+
+      <div class="strip" aria-label="Skills strip">
+        <div class="marquee">
+          <div class="chip"><span class="mini"></span>Testing Strategy</div>
+          <div class="chip"><span class="mini"></span>Cypress</div>
+          <div class="chip"><span class="mini"></span>API Testing (Postman/Bruno)</div>
+          <div class="chip"><span class="mini"></span>CI/CD</div>
+          <div class="chip"><span class="mini"></span>Integration Testing</div>
+          <div class="chip"><span class="mini"></span>AI Ethics (NAIE)</div>
+          <div class="chip"><span class="mini"></span>Workshops</div>
+          <div class="chip"><span class="mini"></span>ODIN Conference</div>
+
+          <!-- duplicate set for seamless marquee -->
+          <div class="chip"><span class="mini"></span>Testing Strategy</div>
+          <div class="chip"><span class="mini"></span>Cypress</div>
+          <div class="chip"><span class="mini"></span>API Testing (Postman/Bruno)</div>
+          <div class="chip"><span class="mini"></span>CI/CD</div>
+          <div class="chip"><span class="mini"></span>Integration Testing</div>
+          <div class="chip"><span class="mini"></span>AI Ethics (NAIE)</div>
+          <div class="chip"><span class="mini"></span>Workshops</div>
+          <div class="chip"><span class="mini"></span>ODIN Conference</div>
+        </div>
       </div>
-    </article>
+    </section>
 
-    <article class="slide accent.tools">
-      <div class="slide-top">
-        <h3 class="slide-title">API testing standardisation</h3>
+    <!-- FOCUS AREAS -->
+    <section id="focus" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">What I focus on</h2>
+          <p class="subtitle">Not “services” — I’m employed as a consultant — but these are the areas I consistently drive impact in.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card reveal">
+            <div class="glow"></div>
+            <h3>Pragmatic QA Strategy</h3>
+            <p>Shift-left mindset, clear acceptance criteria, and smart test design that scales across teams.</p>
+            <div class="bullets">
+              <div class="b"><span class="bDot"></span>Automation strategy & coverage choices</div>
+              <div class="b"><span class="bDot"></span>Regression that stays maintainable</div>
+              <div class="b"><span class="bDot"></span>Quality coaching & collaboration</div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="glow"></div>
+            <h3>Automation Across Systems</h3>
+            <p>Backend-first integration tests and pipelines that reduce manual regression and increase release confidence.</p>
+            <div class="bullets">
+              <div class="b"><span class="bDot"></span>API & contract-level checks</div>
+              <div class="b"><span class="bDot"></span>Cross-application flows</div>
+              <div class="b"><span class="bDot"></span>Flakiness and signal-to-noise</div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="glow"></div>
+            <h3>Community & Research</h3>
+            <p>Talks, workshops, and nonprofit work to make AI ethics and quality discussions concrete and local.</p>
+            <div class="bullets">
+              <div class="b"><span class="bDot"></span>Norsk AI-Etikkforening (NAIE)</div>
+              <div class="b"><span class="bDot"></span>Den Norske Dataforeningen / ODIN</div>
+              <div class="b"><span class="bDot"></span>Workshops on QA & local AI</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="slide-meta">
-        Introduced a repeatable approach using Postman/Bruno + CLI in pipelines.
-      </p>
-      <div class="badges">
-        <span class="badge">Automation</span>
-        <span class="badge">API</span>
-        <span class="badge">Tooling</span>
+    </section>
+
+    <!-- PROJECTS CAROUSEL -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Selected projects</h2>
+          <p class="subtitle">Short, high-signal summaries (more detail can live in your CV).</p>
+        </div>
+
+        <div class="carousel reveal" data-carousel>
+          <button class="cbtn prev" data-prev aria-label="Previous">&#8592;</button>
+
+          <div class="track" data-track tabindex="0" aria-label="Projects carousel">
+
+            <article class="slide qa">
+              <div class="accent-bar"></div>
+              <h4>Cross-application automation initiative</h4>
+              <p class="meta">Established backend-first tests across multiple apps + pipelines to reduce manual regression and increase confidence.</p>
+              <div class="tags">
+                <span class="tag">QA</span><span class="tag">Integration</span><span class="tag">CI/CD</span>
+              </div>
+            </article>
+
+            <article class="slide tools">
+              <div class="accent-bar"></div>
+              <h4>API testing standardisation</h4>
+              <p class="meta">Introduced a repeatable approach using Postman/Bruno + CLI, making test runs consistent across teams.</p>
+              <div class="tags">
+                <span class="tag">Tooling</span><span class="tag">API</span><span class="tag">Automation</span>
+              </div>
+            </article>
+
+            <article class="slide qa">
+              <div class="accent-bar"></div>
+              <h4>Frontend isolated vs dynamic test strategy</h4>
+              <p class="meta">Created a layered strategy to balance speed and coverage (frontend isolated, backend isolated, dynamic integration).</p>
+              <div class="tags">
+                <span class="tag">Strategy</span><span class="tag">Cypress</span><span class="tag">Architecture</span>
+              </div>
+            </article>
+
+            <article class="slide community">
+              <div class="accent-bar"></div>
+              <h4>Norsk AI-Etikkforening (NAIE)</h4>
+              <p class="meta">Nonprofit initiative for AI ethics research & public awareness in a Norwegian context.</p>
+              <div class="tags">
+                <span class="tag">Community</span><span class="tag">AI Ethics</span><span class="tag">Research</span>
+              </div>
+            </article>
+
+          </div>
+
+          <button class="cbtn next" data-next aria-label="Next">&#8594;</button>
+        </div>
       </div>
-    </article>
+    </section>
 
-    <article class="slide accent.community">
-      <div class="slide-top">
-        <h3 class="slide-title">Norsk AI-Etikkforening (NAIE)</h3>
+    <!-- TALKS -->
+    <section id="talks" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Talks & workshops</h2>
+          <p class="subtitle">Topics I speak about (and can repeat as talks/workshops).</p>
+        </div>
+
+        <div class="grid3">
+          <div class="mini-card reveal">
+            <p class="mini-title">GitHub Copilot for QA</p>
+            <p class="mini-p">Real-world pilot experience, risks, and what actually helps testers day-to-day.</p>
+          </div>
+          <div class="mini-card reveal">
+            <p class="mini-title">Backend-first automation in multi-team systems</p>
+            <p class="mini-p">How to start with high ROI tests across APIs/events before UI-heavy E2E.</p>
+          </div>
+          <div class="mini-card reveal">
+            <p class="mini-title">Run AI locally (Ollama + OpenWebUI + n8n)</p>
+            <p class="mini-p">Local setups, privacy, and realistic workflows (including QA use cases).</p>
+          </div>
+        </div>
       </div>
-      <p class="slide-meta">
-        Nonprofit research & awareness work on AI ethics in Norwegian context.
-      </p>
-      <div class="badges">
-        <span class="badge">Community</span>
-        <span class="badge">AI Ethics</span>
-        <span class="badge">Research</span>
+    </section>
+
+    <!-- WRITING -->
+    <section id="writing" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Writing</h2>
+          <p class="subtitle">Blog posts and notes (personal + NAIE). Add links whenever you publish.</p>
+        </div>
+
+        <div class="carousel reveal" data-carousel>
+          <button class="cbtn prev" data-prev aria-label="Previous">&#8592;</button>
+
+          <div class="track" data-track tabindex="0" aria-label="Writing carousel">
+            <article class="slide qa">
+              <div class="accent-bar"></div>
+              <h4>Choosing what to automate</h4>
+              <p class="meta">A pragmatic approach to keep automation maintainable while increasing confidence.</p>
+              <a class="link" href="#" target="_blank" rel="noreferrer">Read →</a>
+              <div class="tags"><span class="tag">QA</span><span class="tag">Strategy</span></div>
+            </article>
+
+            <article class="slide ai">
+              <div class="accent-bar"></div>
+              <h4>AI ethics in smaller languages</h4>
+              <p class="meta">Why Norwegian context changes the conversation about fairness and accessibility.</p>
+              <a class="link" href="#" target="_blank" rel="noreferrer">Read →</a>
+              <div class="tags"><span class="tag">NAIE</span><span class="tag">Ethics</span></div>
+            </article>
+
+            <article class="slide tools">
+              <div class="accent-bar"></div>
+              <h4>Postman vs Bruno (offline-first)</h4>
+              <p class="meta">Practical tradeoffs for teams that need versioning and reproducible API checks.</p>
+              <a class="link" href="#" target="_blank" rel="noreferrer">Read →</a>
+              <div class="tags"><span class="tag">Tooling</span><span class="tag">API</span></div>
+            </article>
+          </div>
+
+          <button class="cbtn next" data-next aria-label="Next">&#8594;</button>
+        </div>
       </div>
-    </article>
+    </section>
 
-    <!-- Duplicate more slides as needed -->
-  </div>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">About</h2>
+          <p class="subtitle">A short version — your CV can carry the full detail.</p>
+        </div>
 
-  <button class="carousel-btn next" data-next aria-label="Next">
-    &#8594;
-  </button>
-</div>
+        <div class="about-grid">
+          <div class="card reveal">
+            <div class="glow"></div>
+            <h3>What you get when I’m on a team</h3>
+            <p>
+              I’m a QA specialist with broad agile experience (including Scrum Master and Business Analyst roles).
+              I’m at my best in complex environments: many teams, many integrations, and a need for clarity, confidence, and visibility.
+            </p>
+            <div class="bullets">
+              <div class="b"><span class="bDot"></span>Testing since 2012 — strategy + automation</div>
+              <div class="b"><span class="bDot"></span>Coaching / mentoring across roles</div>
+              <div class="b"><span class="bDot"></span>Focus on outcomes: confidence, speed, and quality</div>
+            </div>
+          </div>
 
-  </section>
-
-  <section id="talks" class="section">
-    <h2>Talks & Workshops</h2>
-
-    <div class="card">
-      <strong>GitHub Copilot for QA — ODIN Conference</strong>
-      <p>
-        Shared practical experiences from real-world pilot implementation and
-        discussed risks, productivity measurement, and quality implications.
-      </p>
-    </div>
-
-  </section>
-
-  <section id="writing" class="section">
-    <h2>Writing</h2>
-
-<div class="carousel" data-carousel>
-  <button class="carousel-btn prev" data-prev aria-label="Previous">&#8592;</button>
-
-  <div class="carousel-track" data-track tabindex="0" aria-label="Writing carousel">
-    <article class="slide accent qa">
-      <h3 class="slide-title">QA: Choosing what to automate</h3>
-      <p class="slide-meta">A practical approach to balance speed, coverage, and flakiness.</p>
-      <div class="badges">
-        <span class="badge">QA</span><span class="badge">Strategy</span>
+          <div class="reveal" style="display:grid; gap: 12px;">
+            <div class="mini-card">
+              <p class="mini-title">Based in Norway</p>
+              <p class="mini-p">International background (NL → NO). Comfortable in bilingual contexts.</p>
+            </div>
+            <div class="mini-card">
+              <p class="mini-title">Community</p>
+              <p class="mini-p">Den Norske Dataforeningen (ODIN) + founder of NAIE.</p>
+            </div>
+            <div class="mini-card">
+              <p class="mini-title">Speaking</p>
+              <p class="mini-p">Talks and workshops on QA, automation, AI in practice, and ethics.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <a class="link" href="https://medium.com/" target="_blank" rel="noreferrer">Read →</a>
-    </article>
+    </section>
 
-    <article class="slide accent.ai">
-      <h3 class="slide-title">AI Ethics in smaller languages</h3>
-      <p class="slide-meta">Why Norwegian context matters for fairness and accessibility.</p>
-      <div class="badges">
-        <span class="badge">AI</span><span class="badge">Ethics</span><span class="badge">NAIE</span>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Contact</h2>
+          <p class="subtitle">Best way: LinkedIn. Or email me directly.</p>
+        </div>
+
+        <div class="grid3">
+          <a class="card reveal" href="mailto:you@example.com" style="text-decoration:none;">
+            <div class="glow"></div>
+            <h3>Email</h3>
+            <p>you@example.com</p>
+          </a>
+          <a class="card reveal" href="#" style="text-decoration:none;">
+            <div class="glow"></div>
+            <h3>LinkedIn</h3>
+            <p>Add your LinkedIn URL</p>
+          </a>
+          <a class="card reveal" href="#" style="text-decoration:none;">
+            <div class="glow"></div>
+            <h3>GitHub</h3>
+            <p>github.com/WesselBraakman</p>
+          </a>
+        </div>
       </div>
-      <a class="link" href="https://medium.com/" target="_blank" rel="noreferrer">Read →</a>
-    </article>
+    </section>
 
-    <!-- Add more writing cards -->
-  </div>
+  </main>
 
-  <button class="carousel-btn next" data-next aria-label="Next">&#8594;</button>
-</div>
+  <footer>
+    © 2026 Wessel Braakman. All rights reserved.
+  </footer>
 
+  <script>
+    // Carousel controls (reusable)
+    (function () {
+      const carousels = document.querySelectorAll("[data-carousel]");
+      carousels.forEach((c) => {
+        const track = c.querySelector("[data-track]");
+        const prev = c.querySelector("[data-prev]");
+        const next = c.querySelector("[data-next]");
 
-  </section>
+        function scrollByCard(dir) {
+          const first = track.querySelector(".slide");
+          if (!first) return;
+          const gap = parseInt(getComputedStyle(track).gap || "14", 10);
+          const step = first.getBoundingClientRect().width + gap;
+          track.scrollBy({ left: dir * step, behavior: "smooth" });
+        }
 
-  <section id="community" class="section">
-    <h2>Community & Initiatives</h2>
+        prev.addEventListener("click", () => scrollByCard(-1));
+        next.addEventListener("click", () => scrollByCard(1));
 
-    <div class="card">
-      <strong>Norsk AI-Etikkforening (NAIE)</strong>
-      <p>
-        Founder of a nonprofit initiative focused on AI ethics research
-        and public awareness in Norway.
-      </p>
-    </div>
-
-    <div class="card">
-      <strong>Den Norske Dataforeningen — ODIN Conference Team</strong>
-      <p>
-        Part of the organizing team contributing to the QA and AI discussions
-        within the Norwegian tech community.
-      </p>
-    </div>
-
-  </section>
-
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>
-      Connect via LinkedIn or reach out for collaboration, speaking engagements,
-      or professional discussions.
-    </p>
-  </section>
-
-</div>
-
-<footer>
-  © 2026 Wessel Braakman. All rights reserved.
-</footer>
-
-<script>
-  (function () {
-    const carousels = document.querySelectorAll("[data-carousel]");
-    carousels.forEach((c) => {
-      const track = c.querySelector("[data-track]");
-      const prev = c.querySelector("[data-prev]");
-      const next = c.querySelector("[data-next]");
-
-      function scrollByCard(dir) {
-        const firstCard = track.querySelector(".slide");
-        if (!firstCard) return;
-        const gap = parseInt(getComputedStyle(track).gap || "14", 10);
-        const step = firstCard.getBoundingClientRect().width + gap;
-        track.scrollBy({ left: dir * step, behavior: "smooth" });
-      }
-
-      prev.addEventListener("click", () => scrollByCard(-1));
-      next.addEventListener("click", () => scrollByCard(1));
-
-      // Keyboard support when track is focused
-      track.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") scrollByCard(-1);
-        if (e.key === "ArrowRight") scrollByCard(1);
+        track.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") scrollByCard(-1);
+          if (e.key === "ArrowRight") scrollByCard(1);
+        });
       });
-    });
-  })();
-</script>
+    })();
 
+    // Reveal on scroll (simple + light)
+    (function () {
+      const els = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("show");
+        });
+      }, { threshold: 0.12 });
+
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
 </body>
 </html>
