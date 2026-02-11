@@ -101,6 +101,104 @@ footer {
   color: var(--muted);
   font-size: 14px;
 }
+
+/* --- Carousel --- */
+.carousel {
+  position: relative;
+  margin-top: 16px;
+}
+
+.carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 1fr);
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 6px 48px; /* space for arrows */
+  -webkit-overflow-scrolling: touch;
+}
+.carousel-track::-webkit-scrollbar { height: 10px; }
+.carousel-track::-webkit-scrollbar-thumb {
+  background: rgba(100,116,139,.25);
+  border-radius: 999px;
+}
+.carousel-track > .slide {
+  scroll-snap-align: start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.carousel-track > .slide:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(2,6,23,.08);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px; height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.9);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 20px rgba(2,6,23,.08);
+}
+.carousel-btn:hover { border-color: rgba(37,99,235,.4); }
+.carousel-btn:active { transform: translateY(-50%) scale(.98); }
+
+.carousel-btn.prev { left: 6px; }
+.carousel-btn.next { right: 6px; }
+
+.slide-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.slide-title { margin: 0; font-size: 16px; }
+.slide-meta { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+
+.badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.8);
+  color: var(--muted);
+}
+
+/* Category accents */
+.accent {
+  border-top: 4px solid var(--border);
+}
+.accent.qa { border-top-color: #2563eb; }       /* blue */
+.accent.ai { border-top-color: #10b981; }       /* green */
+.accent.community { border-top-color: #f59e0b; }/* amber */
+.accent.tools { border-top-color: #7c3aed; }    /* violet */
+
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.link:hover { text-decoration: underline; }
+
+@media (max-width: 520px) {
+  .carousel-track { padding: 6px 44px; }
+}
+
 </style>
 </head>
 
@@ -150,13 +248,61 @@ footer {
   <section id="projects" class="section">
     <h2>Selected Projects</h2>
 
-    <div class="card">
-      <strong>Cross-Application Automation Initiative</strong>
-      <p>
-        Established backend-first automation across multiple applications,
-        reducing manual regression effort and increasing release confidence.
+<div class="carousel" data-carousel>
+  <button class="carousel-btn prev" data-prev aria-label="Previous">
+    &#8592;
+  </button>
+
+  <div class="carousel-track" data-track tabindex="0" aria-label="Projects carousel">
+    <article class="slide accent qa">
+      <div class="slide-top">
+        <h3 class="slide-title">Cross-application automation initiative</h3>
+      </div>
+      <p class="slide-meta">
+        Backend-first tests across multiple apps + pipelines to reduce regression effort.
       </p>
-    </div>
+      <div class="badges">
+        <span class="badge">QA</span>
+        <span class="badge">Integration</span>
+        <span class="badge">CI/CD</span>
+      </div>
+    </article>
+
+    <article class="slide accent.tools">
+      <div class="slide-top">
+        <h3 class="slide-title">API testing standardisation</h3>
+      </div>
+      <p class="slide-meta">
+        Introduced a repeatable approach using Postman/Bruno + CLI in pipelines.
+      </p>
+      <div class="badges">
+        <span class="badge">Automation</span>
+        <span class="badge">API</span>
+        <span class="badge">Tooling</span>
+      </div>
+    </article>
+
+    <article class="slide accent.community">
+      <div class="slide-top">
+        <h3 class="slide-title">Norsk AI-Etikkforening (NAIE)</h3>
+      </div>
+      <p class="slide-meta">
+        Nonprofit research & awareness work on AI ethics in Norwegian context.
+      </p>
+      <div class="badges">
+        <span class="badge">Community</span>
+        <span class="badge">AI Ethics</span>
+        <span class="badge">Research</span>
+      </div>
+    </article>
+
+    <!-- Duplicate more slides as needed -->
+  </div>
+
+  <button class="carousel-btn next" data-next aria-label="Next">
+    &#8594;
+  </button>
+</div>
 
   </section>
 
@@ -176,13 +322,34 @@ footer {
   <section id="writing" class="section">
     <h2>Writing</h2>
 
-    <div class="card">
-      <strong>Medium Articles</strong>
-      <p>
-        Articles on AI ethics, testing strategy, automation approaches,
-        and local AI experimentation.
-      </p>
-    </div>
+<div class="carousel" data-carousel>
+  <button class="carousel-btn prev" data-prev aria-label="Previous">&#8592;</button>
+
+  <div class="carousel-track" data-track tabindex="0" aria-label="Writing carousel">
+    <article class="slide accent qa">
+      <h3 class="slide-title">QA: Choosing what to automate</h3>
+      <p class="slide-meta">A practical approach to balance speed, coverage, and flakiness.</p>
+      <div class="badges">
+        <span class="badge">QA</span><span class="badge">Strategy</span>
+      </div>
+      <a class="link" href="https://medium.com/" target="_blank" rel="noreferrer">Read →</a>
+    </article>
+
+    <article class="slide accent.ai">
+      <h3 class="slide-title">AI Ethics in smaller languages</h3>
+      <p class="slide-meta">Why Norwegian context matters for fairness and accessibility.</p>
+      <div class="badges">
+        <span class="badge">AI</span><span class="badge">Ethics</span><span class="badge">NAIE</span>
+      </div>
+      <a class="link" href="https://medium.com/" target="_blank" rel="noreferrer">Read →</a>
+    </article>
+
+    <!-- Add more writing cards -->
+  </div>
+
+  <button class="carousel-btn next" data-next aria-label="Next">&#8594;</button>
+</div>
+
 
   </section>
 
@@ -220,6 +387,34 @@ footer {
 <footer>
   © 2026 Wessel Braakman. All rights reserved.
 </footer>
+
+<script>
+  (function () {
+    const carousels = document.querySelectorAll("[data-carousel]");
+    carousels.forEach((c) => {
+      const track = c.querySelector("[data-track]");
+      const prev = c.querySelector("[data-prev]");
+      const next = c.querySelector("[data-next]");
+
+      function scrollByCard(dir) {
+        const firstCard = track.querySelector(".slide");
+        if (!firstCard) return;
+        const gap = parseInt(getComputedStyle(track).gap || "14", 10);
+        const step = firstCard.getBoundingClientRect().width + gap;
+        track.scrollBy({ left: dir * step, behavior: "smooth" });
+      }
+
+      prev.addEventListener("click", () => scrollByCard(-1));
+      next.addEventListener("click", () => scrollByCard(1));
+
+      // Keyboard support when track is focused
+      track.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") scrollByCard(-1);
+        if (e.key === "ArrowRight") scrollByCard(1);
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
